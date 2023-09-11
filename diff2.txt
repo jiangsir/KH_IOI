@@ -1,0 +1,24 @@
+t = int(input())
+for i in range(t):
+    h = int(input())
+    eqs = {}
+    for j in range(h - 1):
+        eq = input()
+        eq = eq.replace('等於', ' ')
+        eq = eq.replace('=', ' ')
+        v, val = map(str, eq.split())
+        eqs[v] = int(val)
+    te = input()
+    pe = te
+    for v, val in eqs.items():
+        pe = pe.replace(str(v), str(val))
+    f, mm = map(str, te.split("="))
+    mm = int(mm)
+    if eval(f.replace('?', '+'), eqs) == mm:
+        print("+ 加")
+    elif eval(f.replace('?', '-'), eqs) == mm:
+        print("- 減")
+    elif eval(f.replace('?', '*'), eqs) == mm:
+        print("* 乘")
+    elif eval(f.replace('?', '/'), eqs) == mm:
+        print("/ 除")
